@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { listTag } from "@/bindings-api/sdk.gen";
+import { listTag } from "@/bindings/sdk.gen";
+import { ThemeSelector } from "@/components/ThemeSelector";
 
 export const Route = createFileRoute("/blog/")({
   component: RouteComponent,
@@ -18,6 +19,7 @@ function RouteComponent() {
     <div>
       Hello "/blog/"!
       <pre>{JSON.stringify(data, null, 2)}</pre>
+      <ThemeSelector />
     </div>
   );
 }

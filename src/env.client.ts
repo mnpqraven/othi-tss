@@ -1,11 +1,7 @@
 import { createEnv } from "@t3-oss/env-core";
-import { z } from "zod";
+import { type } from "arktype";
 
-export const env = createEnv({
-  server: {
-    SERVER_URL: z.string().url().optional(),
-  },
-
+export const clientEnv = createEnv({
   /**
    * The prefix that client-side variables must have. This is enforced both at
    * a type-level and at runtime.
@@ -13,7 +9,9 @@ export const env = createEnv({
   clientPrefix: "VITE_",
 
   client: {
-    VITE_APP_TITLE: z.string().min(1).optional(),
+    VITE_APP_TITLE: type("string>=1"),
+    VITE_API_URL: type("string>=1"),
+    VITE_BASE_URL: type("string>=1"),
   },
 
   /**
