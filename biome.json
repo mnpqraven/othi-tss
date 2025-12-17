@@ -9,6 +9,7 @@
     "ignoreUnknown": true,
     "includes": [
       "**/src/**/*",
+      "openapi-ts.config.ts",
       "**/.vscode/**/*",
       "**/index.html",
       "**/vite.config.js",

@@ -11,7 +11,6 @@ export const clientEnv = createEnv({
   client: {
     VITE_APP_TITLE: type("string>=1"),
     VITE_API_URL: type("string>=1"),
-    VITE_BASE_URL: type("string>=1"),
   },
 
   /**

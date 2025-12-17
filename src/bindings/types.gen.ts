@@ -72,6 +72,10 @@ export type BlogTagShape = {
     label: string;
 };
 
+export type HealthResponse = {
+    response: string;
+};
+
 export type HelloReply = {
     message: string;
 };
@@ -258,21 +262,53 @@ export type PullSimulationResponses = {
 
 export type PullSimulationResponse = PullSimulationResponses[keyof PullSimulationResponses];
 
-export type HealthData = {
+export type HealthApiData = {
     body?: never;
     path?: never;
     query?: never;
-    url: '/api/health';
+    url: '/api/health/api';
 };
 
-export type HealthResponses = {
+export type HealthApiResponses = {
     /**
      * Success
      */
-    200: string;
+    200: HealthResponse;
 };
 
-export type HealthResponse = HealthResponses[keyof HealthResponses];
+export type HealthApiResponse = HealthApiResponses[keyof HealthApiResponses];
+
+export type HealthCronData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/health/cron';
+};
+
+export type HealthCronResponses = {
+    /**
+     * Success
+     */
+    200: HealthResponse;
+};
+
+export type HealthCronResponse = HealthCronResponses[keyof HealthCronResponses];
+
+export type HealthRpcData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/health/rpc';
+};
+
+export type HealthRpcResponses = {
+    /**
+     * Success
+     */
+    200: HealthResponse;
+};
+
+export type HealthRpcResponse = HealthRpcResponses[keyof HealthRpcResponses];
 
 export type RpcgreetData = {
     body: HelloRequest;

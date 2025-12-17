@@ -3,8 +3,8 @@
 import { type DefaultError, queryOptions, type UseMutationOptions } from '@tanstack/react-query';
 
 import { client } from '../client.gen';
-import { createTag, deleteTag, getTag, health, listBlogMeta, listTag, type Options, pullSimulation, rpcgreet, updateTag } from '../sdk.gen';
-import type { CreateTagData, CreateTagResponse, DeleteTagData, DeleteTagResponse, GetTagData, GetTagResponse, HealthData, HealthResponse, ListBlogMetaData, ListBlogMetaResponse, ListTagData, ListTagResponse, PullSimulationData, PullSimulationResponse, RpcgreetData, RpcgreetResponse, UpdateTagData, UpdateTagResponse } from '../types.gen';
+import { createTag, deleteTag, getTag, healthApi, healthCron, healthRpc, listBlogMeta, listTag, type Options, pullSimulation, rpcgreet, updateTag } from '../sdk.gen';
+import type { CreateTagData, CreateTagResponse, DeleteTagData, DeleteTagResponse, GetTagData, GetTagResponse, HealthApiData, HealthApiResponse, HealthCronData, HealthCronResponse, HealthRpcData, HealthRpcResponse, ListBlogMetaData, ListBlogMetaResponse, ListTagData, ListTagResponse, PullSimulationData, PullSimulationResponse, RpcgreetData, RpcgreetResponse, UpdateTagData, UpdateTagResponse } from '../types.gen';
 
 export type QueryKey<TOptions extends Options> = [
     Pick<TOptions, 'baseUrl' | 'body' | 'headers' | 'path' | 'query'> & {
@@ -146,14 +146,14 @@ export const pullSimulationMutation = (options?: Partial<Options<PullSimulationD
     return mutationOptions;
 };
 
-export const healthQueryKey = (options?: Options<HealthData>) => createQueryKey('health', options);
+export const healthApiQueryKey = (options?: Options<HealthApiData>) => createQueryKey('healthApi', options);
 
 /**
- * Get health of the API.
+ * Get health of the API server.
  */
-export const healthOptions = (options?: Options<HealthData>) => queryOptions<HealthResponse, DefaultError, HealthResponse, ReturnType<typeof healthQueryKey>>({
+export const healthApiOptions = (options?: Options<HealthApiData>) => queryOptions<HealthApiResponse, DefaultError, HealthApiResponse, ReturnType<typeof healthApiQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await health({
+        const { data } = await healthApi({
             ...options,
             ...queryKey[0],
             signal,
@@ -161,7 +161,43 @@ export const healthOptions = (options?: Options<HealthData>) => queryOptions<Hea
         });
         return data;
     },
-    queryKey: healthQueryKey(options)
+    queryKey: healthApiQueryKey(options)
+});
+
+export const healthCronQueryKey = (options?: Options<HealthCronData>) => createQueryKey('healthCron', options);
+
+/**
+ * Get health of the cron worker.
+ */
+export const healthCronOptions = (options?: Options<HealthCronData>) => queryOptions<HealthCronResponse, DefaultError, HealthCronResponse, ReturnType<typeof healthCronQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await healthCron({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: healthCronQueryKey(options)
+});
+
+export const healthRpcQueryKey = (options?: Options<HealthRpcData>) => createQueryKey('healthRpc', options);
+
+/**
+ * Get health of the RPC server.
+ */
+export const healthRpcOptions = (options?: Options<HealthRpcData>) => queryOptions<HealthRpcResponse, DefaultError, HealthRpcResponse, ReturnType<typeof healthRpcQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await healthRpc({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: healthRpcQueryKey(options)
 });
 
 /**

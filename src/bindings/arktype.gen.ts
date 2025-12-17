@@ -134,6 +134,14 @@ export const BlogTagShape = _type({
     })
 });
 
+export const HealthResponse = _type({
+    response: _type({
+        name: 'string',
+        platform: '\'android\' | \'ios\'',
+        'versions?': '(number | string)[]'
+    })
+});
+
 export const HelloReply = _type({
     message: _type({
         name: 'string',

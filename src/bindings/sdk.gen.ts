@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { CreateTagData, CreateTagResponses, DeleteTagData, DeleteTagResponses, GetTagData, GetTagResponses, HealthData, HealthResponses, ListBlogMetaData, ListBlogMetaResponses, ListTagData, ListTagResponses, PullSimulationData, PullSimulationResponses, RpcgreetData, RpcgreetResponses, UpdateTagData, UpdateTagResponses } from './types.gen';
+import type { CreateTagData, CreateTagResponses, DeleteTagData, DeleteTagResponses, GetTagData, GetTagResponses, HealthApiData, HealthApiResponses, HealthCronData, HealthCronResponses, HealthRpcData, HealthRpcResponses, ListBlogMetaData, ListBlogMetaResponses, ListTagData, ListTagResponses, PullSimulationData, PullSimulationResponses, RpcgreetData, RpcgreetResponses, UpdateTagData, UpdateTagResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -60,9 +60,19 @@ export const pullSimulation = <ThrowOnError extends boolean = false>(options: Op
 });
 
 /**
- * Get health of the API.
+ * Get health of the API server.
  */
-export const health = <ThrowOnError extends boolean = false>(options?: Options<HealthData, ThrowOnError>) => (options?.client ?? client).get<HealthResponses, unknown, ThrowOnError>({ url: '/api/health', ...options });
+export const healthApi = <ThrowOnError extends boolean = false>(options?: Options<HealthApiData, ThrowOnError>) => (options?.client ?? client).get<HealthApiResponses, unknown, ThrowOnError>({ url: '/api/health/api', ...options });
+
+/**
+ * Get health of the cron worker.
+ */
+export const healthCron = <ThrowOnError extends boolean = false>(options?: Options<HealthCronData, ThrowOnError>) => (options?.client ?? client).get<HealthCronResponses, unknown, ThrowOnError>({ url: '/api/health/cron', ...options });
+
+/**
+ * Get health of the RPC server.
+ */
+export const healthRpc = <ThrowOnError extends boolean = false>(options?: Options<HealthRpcData, ThrowOnError>) => (options?.client ?? client).get<HealthRpcResponses, unknown, ThrowOnError>({ url: '/api/health/rpc', ...options });
 
 /**
  * Simple greeter communication with the rpc client
