@@ -1,4 +1,4 @@
-import { Tabs as BTabs } from "@base-ui-components/react/tabs";
+import { Tabs as BTabs } from "@base-ui/react/tabs";
 import { cn } from "@/lib/utils";
 
 export function Tabs({ className, ...props }: BTabs.Root.Props) {

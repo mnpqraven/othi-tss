@@ -1,4 +1,4 @@
-import { Select as BSelect } from "@base-ui-components/react/select";
+import { Select as BSelect } from "@base-ui/react/select";
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 

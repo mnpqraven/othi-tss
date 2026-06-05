@@ -1,4 +1,4 @@
-import { Combobox as BCombobox } from "@base-ui-components/react/combobox";
+import { Combobox as BCombobox } from "@base-ui/react/combobox";
 import { CheckIcon, XIcon } from "lucide-react";
 import React, { Fragment, type Key, type ReactNode, useId } from "react";
 

@@ -8,7 +8,7 @@ export default defineConfig({
       name: "@hey-api/client-ky",
       runtimeConfigPath: "../lib/codegen-config.ts",
     },
-    "arktype",
+    "zod",
     "@tanstack/react-query",
   ],
 });

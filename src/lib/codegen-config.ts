@@ -1,5 +1,5 @@
 import type { CreateClientConfig } from "@/bindings/client";
-import { clientEnv } from "@/env.client";
+import { clientEnv } from "@/env_client";
 
 export const createClientConfig: CreateClientConfig = (config) => ({
   ...config,

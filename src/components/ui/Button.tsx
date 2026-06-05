@@ -1,4 +1,4 @@
-import { Button as BButton } from "@base-ui-components/react/button";
+import { Button as BButton } from "@base-ui/react/button";
 import type { ComponentPropsWithRef } from "react";
 import type { VariantProps } from "tailwind-variants";
 import { tv } from "@/lib/utils";

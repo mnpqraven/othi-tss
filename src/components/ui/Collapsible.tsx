@@ -1,4 +1,4 @@
-import { Collapsible as BCollapsible } from "@base-ui-components/react/collapsible";
+import { Collapsible as BCollapsible } from "@base-ui/react/collapsible";
 import { ChevronRight, type LucideProps } from "lucide-react";
 import { cn } from "@/lib/utils";
 

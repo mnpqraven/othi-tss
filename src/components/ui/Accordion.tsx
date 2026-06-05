@@ -1,4 +1,4 @@
-import { Accordion as BAccordion } from "@base-ui-components/react/accordion";
+import { Accordion as BAccordion } from "@base-ui/react/accordion";
 import { PlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 

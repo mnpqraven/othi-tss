@@ -1,4 +1,4 @@
-import { Avatar as BAvatar } from "@base-ui-components/react/avatar";
+import { Avatar as BAvatar } from "@base-ui/react/avatar";
 import { cn } from "@/lib/utils";
 
 interface Props extends Omit<BAvatar.Image.Props, "src"> {

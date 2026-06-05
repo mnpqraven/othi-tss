@@ -3,11 +3,14 @@ import {
   Link,
   type LinkOptions,
 } from "@tanstack/react-router";
-import { clientEnv } from "@/env.client";
+import { clientEnv } from "@/env_client";
 import { tv } from "@/lib/utils";
 
 export const Route = createFileRoute("/admin/")({
   component: RouteComponent,
+  head: () => ({
+    meta: [{ title: "Admin panel" }],
+  }),
 });
 
 const OPENAPI_DOCS = ["swagger", "rapidoc", "redoc"];
@@ -26,6 +29,9 @@ function RouteComponent() {
       <ServiceBlock />
 
       <div className="font-semibold text-3xl">Database</div>
+      <Link className="underline hover:no-underline" to="/admin/database">
+        Detail
+      </Link>
     </div>
   );
 }

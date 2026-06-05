@@ -1,4 +1,4 @@
-import { Combobox as BCombobox } from "@base-ui-components/react/combobox";
+import { Combobox as BCombobox } from "@base-ui/react/combobox";
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import { type Key, useId } from "react";
 

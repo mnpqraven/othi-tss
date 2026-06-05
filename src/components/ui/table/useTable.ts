@@ -4,10 +4,9 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  type PaginationState,
   useReactTable,
 } from "@tanstack/react-table";
-import { type Dispatch, type SetStateAction, useMemo } from "react";
+import { useMemo } from "react";
 import { fuzzyFilter, makeDefaultPinnedState } from "./utils";
 
 interface Props<TData> {
@@ -15,17 +14,9 @@ interface Props<TData> {
   // biome-ignore lint/suspicious/noExplicitAny: known issue with columns type
   columns: ColumnDef<TData, any>[];
   totalItems?: number;
-  pagination: PaginationState;
-  setPagination: Dispatch<SetStateAction<PaginationState>>;
 }
 
-export function useTable<TData>({
-  columns,
-  data,
-  pagination,
-  setPagination,
-  totalItems,
-}: Props<TData>) {
+export function useTable<TData>({ columns, data, totalItems }: Props<TData>) {
   const stableData = useMemo(() => data || [], [data]);
 
   return useReactTable({
@@ -34,8 +25,6 @@ export function useTable<TData>({
     data: stableData,
     columns,
 
-    // logic
-    globalFilterFn: "fuzzy",
     filterFns: {
       fuzzy: fuzzyFilter, //define as a filter function that can be used in column definitions
     },
@@ -50,10 +39,6 @@ export function useTable<TData>({
     debugHeaders: true,
     debugColumns: false,
     rowCount: totalItems ?? -1,
-
-    // pagination
-    manualPagination: true,
-    onPaginationChange: setPagination,
-    state: { pagination },
+    // TODO: re-introduce manual pagination
   });
 }

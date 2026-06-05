@@ -1,4 +1,4 @@
-import { Dialog as BDialog } from "@base-ui-components/react/dialog";
+import { Dialog as BDialog } from "@base-ui/react/dialog";
 import { cn } from "@/lib/utils";
 import { Button } from "./Button";
 

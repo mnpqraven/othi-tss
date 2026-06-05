@@ -1,4 +1,4 @@
-import { Popover as BPopover } from "@base-ui-components/react/popover";
+import { Popover as BPopover } from "@base-ui/react/popover";
 import { cn } from "@/lib/utils";
 import { Button } from "./Button";
 

@@ -1,4 +1,4 @@
-import { Tooltip as BTooltip } from "@base-ui-components/react/tooltip";
+import { Tooltip as BTooltip } from "@base-ui/react/tooltip";
 import { cn } from "@/lib/utils";
 import { Button } from "./Button";
 

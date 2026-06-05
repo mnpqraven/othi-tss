@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
-import { NavigationMenu as BNavigationMenu } from "@base-ui-components/react/navigation-menu";
+import { NavigationMenu as BNavigationMenu } from "@base-ui/react/navigation-menu";
 import { ChevronDownIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function NavigationMenu({
   children,
