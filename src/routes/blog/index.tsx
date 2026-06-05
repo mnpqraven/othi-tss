@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { listTag } from "@/bindings/sdk.gen";
+import { listBlogMeta, listTag } from "@/bindings/sdk.gen";
 import { ThemeSelector } from "@/components/ThemeSelector";
 
 export const Route = createFileRoute("/blog/")({
@@ -8,17 +8,21 @@ export const Route = createFileRoute("/blog/")({
     const { data } = await listTag({
       path: { all: true, pageIndex: 0, pageSize: 10, search: null },
     });
+    const { data: metas } = await listBlogMeta({
+      path: { all: true, pageIndex: 0, pageSize: 10, search: null },
+    });
 
-    return { data };
+    return { data, metas };
   },
 });
 
 function RouteComponent() {
-  const { data } = Route.useLoaderData();
+  const { data, metas } = Route.useLoaderData();
   return (
     <div>
       Hello "/blog/"!
       <pre>{JSON.stringify(data, null, 2)}</pre>
+      <pre>{JSON.stringify(metas, null, 2)}</pre>
       <ThemeSelector />
     </div>
   );
